@@ -1,0 +1,261 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GSS CAR Makeovers - Premium Automotive Services{% endblock %}</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5500', 
+                        dark: '#0A0A0A',
+                        grey: '#2C2C2C',
+                        lightgrey: '#F5F5F5',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #FF5500;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff7733;
+        }
+    </style>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-dark text-white">
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-dark/95 backdrop-blur-sm border-b border-grey/20">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="{% url 'home' %}" class="flex items-center">
+                    {% include 'components/logo.html' %}
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="{% url 'home' %}" class="nav-link text-white hover:text-primary transition-colors duration-300 font-medium">Home</a>
+                    <a href="{% url 'services' %}" class="nav-link text-white hover:text-primary transition-colors duration-300 font-medium">Services</a>
+                    <a href="{% url 'gallery' %}" class="nav-link text-white hover:text-primary transition-colors duration-300 font-medium">Gallery</a>
+                    <a href="{% url 'about' %}" class="nav-link text-white hover:text-primary transition-colors duration-300 font-medium">About</a>
+
+                    <a href="{% url 'contact_page' %}" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                        Contact Us
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-grey/95 backdrop-blur-sm border-t border-grey/20">
+            <div class="container mx-auto px-4 py-6 space-y-4">
+                <a href="{% url 'home' %}" class="block text-white hover:text-primary transition-colors duration-300 py-2 font-medium">Home</a>
+                <a href="{% url 'services' %}" class="block text-white hover:text-primary transition-colors duration-300 py-2 font-medium">Services</a>
+                <a href="{% url 'gallery' %}" class="block text-white hover:text-primary transition-colors duration-300 py-2 font-medium">Gallery</a>
+                <a href="{% url 'about' %}" class="block text-white hover:text-primary transition-colors duration-300 py-2 font-medium">About</a>
+
+                <a href="{% url 'contact_page' %}" class="block bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="pt-20">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-grey/50 border-t border-grey/30 mt-20">
+        <div class="container mx-auto px-4 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                
+                <!-- Column 1: About -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <a href="{% url 'home' %}" class="flex items-center">
+                             {% include 'components/logo.html' %}
+                        </a>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Premium automotive makeover services. Transforming vehicles with expert craftsmanship and cutting-edge techniques.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-grey rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-grey rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-grey rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-grey rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Column 2: Services -->
+                <div>
+                    <h3 class="text-xl font-bold font-poppins mb-6">Our Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-primary transition-colors duration-300">Ceramic Coating</a></li>
+                        <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-primary transition-colors duration-300">Paint Protection Film</a></li>
+                        <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-primary transition-colors duration-300">Vehicle Wraps</a></li>
+                        <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-primary transition-colors duration-300">Interior Customization</a></li>
+                        <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-primary transition-colors duration-300">Detailing & Polishing</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3: Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold font-poppins mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="{% url 'home' %}" class="text-gray-400 hover:text-primary transition-colors duration-300">Home</a></li>
+                        <li><a href="{% url 'gallery' %}" class="text-gray-400 hover:text-primary transition-colors duration-300">Portfolio</a></li>
+                        <li><a href="{% url 'about' %}" class="text-gray-400 hover:text-primary transition-colors duration-300">About Us</a></li>
+
+                        <li><a href="{% url 'contact_page' %}" class="text-gray-400 hover:text-primary transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4: Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold font-poppins mb-6">Contact Info</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-primary mt-1"></i>
+                            <span class="text-gray-400">123 Auto Street, Car City, CC 12345</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-phone text-primary mt-1"></i>
+                            <span class="text-gray-400">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-envelope text-primary mt-1"></i>
+                            <span class="text-gray-400">info@gsscar.com</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-clock text-primary mt-1"></i>
+                            <span class="text-gray-400">Mon-Sat: 9AM - 6PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="border-t border-grey/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    © 2026 GSS CAR Makeovers. All rights reserved.
+                </p>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+        
+        // Sticky Navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
